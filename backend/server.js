@@ -17,7 +17,16 @@ const app = express();
 connectDB();
 
 // ✅ IMPORTANT: Body parser MUST come before any route that uses req.body
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+// ✅ CORS configuration for local + production
+app.use(cors({
+  origin: [
+    'http://localhost:3000',
+    'https://thefolio-project-ten.vercel.app'  // Your Vercel frontend URL
+  ],
+  credentials: true,
+}));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // This parses JSON bodies
 app.use(express.urlencoded({ extended: true })); // This parses form data
 
