@@ -8,6 +8,7 @@ import API from '../api/axios';
 function Home() {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
+    const BACKEND_URL = process.env.REACT_APP_API_URL?.replace('/api', '');
 
     useEffect(() => {
         API.get('/posts')
@@ -153,7 +154,7 @@ function Home() {
                                             <div key={post._id} className="post-card">
                                                 {post.image && (
                                                     <img 
-                                                        src={`http://localhost:5000/uploads/${post.image}`}
+                                                        src={`${BACKEND_URL}/uploads/${post.image}`}
                                                         alt={post.title}
                                                         className="post-image"
                                                     />

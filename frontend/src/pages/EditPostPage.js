@@ -20,6 +20,7 @@ const EditPostPage = () => {
     
     const { user } = useAuth();
     const navigate = useNavigate();
+    const BACKEND_URL = process.env.REACT_APP_API_URL?.replace('/api', '');
 
     const fetchPost = useCallback(async () => {
         console.log('🔍 Fetching post with ID:', id);
@@ -190,7 +191,7 @@ const EditPostPage = () => {
                                     <label>Current Image:</label>
                                     <div className="current-image">
                                         <img 
-                                            src={`http://localhost:5000/uploads/${currentImage}`}
+                                            src={`${BACKEND_URL}/uploads/${currentImage}`}
                                             alt="Current post"
                                             style={{
                                                 maxWidth: '100%',

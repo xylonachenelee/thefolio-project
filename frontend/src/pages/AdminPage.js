@@ -16,6 +16,7 @@ const AdminPage = () => {
     const [success, setSuccess] = useState('');
     const [selectedMessage, setSelectedMessage] = useState(null);
     const { user } = useAuth();
+    const BACKEND_URL = process.env.REACT_APP_API_URL?.replace('/api', '');
 
     useEffect(() => {
         fetchData();
@@ -198,7 +199,7 @@ const AdminPage = () => {
                             <div className="admin-profile-avatar">
                                 {user?.profilePic ? (
                                     <img 
-                                        src={`http://localhost:5000/uploads/${user.profilePic}`}
+                                        src={`${BACKEND_URL}/uploads/${user.profilePic}`}
                                         alt={user.name}
                                         className="admin-avatar-img"
                                     />
@@ -276,7 +277,7 @@ const AdminPage = () => {
                                                         <div className="user-avatar">
                                                             {u.profilePic ? (
                                                                 <img 
-                                                                    src={`http://localhost:5000/uploads/${u.profilePic}`}
+                                                                    src={`${BACKEND_URL}/uploads/${u.profilePic}`}
                                                                     alt={u.name}
                                                                 />
                                                             ) : (

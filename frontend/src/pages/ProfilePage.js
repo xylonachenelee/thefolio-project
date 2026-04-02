@@ -17,6 +17,7 @@ const ProfilePage = () => {
     const [msg, setMsg] = useState('');
     const [error, setError] = useState('');
     const [activeTab, setActiveTab] = useState('profile');
+    const BACKEND_URL = process.env.REACT_APP_API_URL?.replace('/api', '');
 
     // In ProfilePage.js, update the handleProfile function:
 const handleProfile = async (e) => {
@@ -142,7 +143,7 @@ const handleProfile = async (e) => {
                                             />
                                         ) : user?.profilePic ? (
                                             <img 
-                                                src={`http://localhost:5000/uploads/${user.profilePic}`} 
+                                                src={`${BACKEND_URL}/uploads/${user.profilePic}`}
                                                 alt={user.name}
                                             />
                                         ) : (

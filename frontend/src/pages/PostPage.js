@@ -16,6 +16,7 @@ const PostPage = () => {
     const [error, setError] = useState('');
     const { user } = useAuth();
     const navigate = useNavigate();
+    const BACKEND_URL = process.env.REACT_APP_API_URL?.replace('/api', '');
 
     useEffect(() => {
         const fetchPostAndComments = async () => {
@@ -120,10 +121,10 @@ const PostPage = () => {
                             <div className="author-info">
                                 <img 
                                     src={post.author?.profilePic 
-                                        ? `http://localhost:5000/uploads/${post.author.profilePic}`
+                                        ? `${BACKEND_URL}/uploads/${post.author.profilePic}`
                                         : 'https://via.placeholder.com/50'}
-                                    alt={post.author?.name}
-                                    className="author-avatar"
+                                alt={post.author?.name}
+                                className="author-avatar"
                                 />
                                 <div className="author-details">
                                     <p className="author-name">{post.author?.name}</p>
@@ -152,7 +153,7 @@ const PostPage = () => {
                         {post.image && (
                             <div className="post-image-container">
                                 <img 
-                                    src={`http://localhost:5000/uploads/${post.image}`}
+                                    src={`${BACKEND_URL}/uploads/${post.image}`}
                                     alt={post.title}
                                     className="post-image"
                                 />
@@ -202,7 +203,7 @@ const PostPage = () => {
                                             <div className="comment-header">
                                                 <img 
                                                     src={comment.author?.profilePic 
-                                                        ? `http://localhost:5000/uploads/${comment.author.profilePic}`
+                                                        ? `${BACKEND_URL}/uploads/${comment.author.profilePic}`
                                                         : 'https://via.placeholder.com/30'}
                                                     alt={comment.author?.name}
                                                     className="comment-avatar"
